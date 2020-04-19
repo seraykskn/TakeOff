@@ -1,0 +1,23 @@
+﻿@model DataModel.User
+@{
+    
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+@using (Html.BeginForm("Logout", "User", FormMethod.Post))
+  {
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/Home/Login" class="text-black text-danger">Logout</a>
+            
+            @*<a href="#" title="Logout" class="btn btn-md btn-primary">Logout</a>*@
+        </li>          
+    </ul>
+</div> @*navbar collapse*@
+}
+
+<h1>HoşgeLdiniz Sn. @Model.Name</h1>
+
+
+
+

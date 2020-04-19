@@ -1,0 +1,202 @@
+﻿@model DataModel.User
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@*<div class="w3-container">
+    <h3><b>Gezelim Görelim</b></h3>
+</div>
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>*@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star </title>
+    <link rel="stylesheet" href="~/Templates/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    @*<link rel="stylesheet" href="../../vendors/iconfonts/puse-icons-feather/feather.css">
+        <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+        <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">*@
+    <link rel="stylesheet" href="~/Templates/assets/css/style.css">
+    <link rel="shortcut icon" href="~/Templates/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+                <div class="row w-100">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auto-form-wrapper">
+
+                            @using (Html.BeginForm("Create", "Home", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <label class="label">Name</label>
+                                    <div class="input-group">
+                                        @*<input type="text" class="form-control" placeholder="Username">*@
+                                        @*<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />*@
+                                        @Html.TextBox("Name", null, new { @class = "form-control", @style = "color:blue;", @placeholder = "Name" })
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="mdi mdi-check-circle-outline"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Surname</label>
+                                    <div class="input-group">
+                                        @*<input type="text" class="form-control" placeholder="Username">*@
+                                        @*<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />*@
+                                        @Html.TextBox("Surname", null, new { @class = "form-control", @style = "color:blue;", @placeholder = "Surname" })
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="mdi mdi-check-circle-outline"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                    <div class="form-group">
+                                        <label class="label">Mail</label>
+                                        <div class="input-group">
+                                            @*<input type="text" class="form-control" placeholder="Username">*@
+                                            @*<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />*@
+                                            @Html.TextBox("Mail", null, new { @class = "form-control", @style = "color:blue;", @placeholder = "Email" })
+
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">
+                                                    <i class="mdi mdi-check-circle-outline"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <div class="form-group">
+                                    <label class="label">Password</label>
+                                    <div class="input-group">
+                                        @*<input class="form-control" id="password" name="password" placeholder="*********" type="password" required>*@
+                                        <input type="password" 
+                                        @Html.TextBox("Password", null, new { @class = "form-control", @style = "color:blue;", @placeholder = "**********" })
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="mdi mdi-check-circle-outline"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary submit-btn btn-block">Create</button>   
+                                </div>
+   
+
+                                <div class="form-group d-flex justify-content-between">
+                                    <div class="form-check form-check-flat mt-0">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" checked> Keep me signed in
+                                        </label>
+                                    </div>
+                                    <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-block g-login">
+                                        <img class="mr-3" src="../../images/file-icons/icon-google.svg" alt="">Log in with Google
+                                    </button>
+                                </div>
+                                <div class="text-block text-center my-3">
+                                    <span class="text-small font-weight-semibold">Have an account with us ?</span>
+                                    <a href="/Home/Login" class="text-black text-small">Login here</a>
+                                </div>
+                            }
+                        </div>
+                        <ul class="auth-footer">
+                            <li>
+                                <a href="#">Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms</a>
+                            </li>
+                        </ul>
+                        <p class="footer-text text-center">copyright © 2018 Bootstrapdash. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+
+    <script src="~/Templates/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Templates/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+
+    <script src="~/Templates/assets/js/off-canvas.js"></script>
+    <script src="../../js/hoverable-collapse.js"></script>
+
+    <script src="~/Templates/assets/js/misc.js"></script>
+    <script src="../../js/settings.js"></script>
+    <script src="../../js/todolist.js"></script>
+    <!-- endinject -->
+</body>
+</html>
+
+

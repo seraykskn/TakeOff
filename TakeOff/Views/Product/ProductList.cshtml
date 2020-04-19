@@ -1,0 +1,93 @@
+﻿@model IEnumerable<DataModel.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+    Layout = "~/Views/Shared/MasterLayout.cshtml";
+}
+@helper Truncate(string input, int length)
+{
+    if (input.Length <= length)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, length) <text>...</text>
+    }
+
+}
+
+<h2>İstediğim Ürünler</h2>
+@*<div class="card" style="width: 18rem;">
+    <img class="card-img-top" src="~/Templates/assets/images/favicon.png" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        @Html.DisplayNameFor(model => model.ProductName)
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Html.DisplayNameFor(model => model.Place)</li>
+        <li class="list-group-item">@Html.DisplayNameFor(model => model.Price)</li>
+        <li class="list-group-item">@Html.DisplayNameFor(model => model.Comment)</li>
+    </ul>
+    
+</div>*@
+@*<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Place)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th></th>
+    </tr>*@
+    @foreach (var item in Model)
+    {
+
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top"
+               src="@Url.Content(item.ImageUrl)" width="200" height="200" />
+            
+            <div class="card-body">
+                
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">@Truncate(item.Place, 25)</li>
+                <li class="list-group-item">@Html.DisplayFor(modelItem => item.Price)</li>
+                <li class="list-group-item">@Html.DisplayFor(modelItem => item.Comment)</li>
+            </ul>
+
+        </div>
+        <tr>
+        @*<tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+
+            <td>
+                @Truncate(item.Place, 25)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>*@
+            <td>
+                @Html.ActionLink("Güncelle", "Edit", new { id = item.ProductId }) |
+                @Html.ActionLink("İncele", "Details", new { id = item.ProductId }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.ProductId })
+            </td>
+        </tr>
+    }
+
+</table>

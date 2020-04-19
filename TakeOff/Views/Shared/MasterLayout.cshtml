@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    @*<link rel="stylesheet" href="~/Templates/assets/css/style.css">*@
+    </head>
+
+    <style>
+        body, h1, h2, h3, h4, h5 {
+            font-family: "Raleway", sans-serif;
+        }
+    </style>
+<body class="w3-light-grey">
+    @*<div class="container-scroller">*@
+        @*<div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+            <div class="content-wrapper d-flex align-items-center auth profile-bg-1 theme-three">*@
+
+                <!-- w3-content defines a container for fixed size centered content,
+                and is wrapped around the whole page content, except for the footer in this example -->
+                <div class="w3-content" style="max-width:1400px">
+
+                    <!-- Header -->
+                    <header class="w3-container w3-center w3-padding-32">
+                        <h1><b>PROFILE</b></h1>
+                        <p>Welcome to the blog of <span class="w3-tag">Seray</span></p>
+                    </header>
+
+                    <!-- Grid -->
+                    <div class="w3-row">
+                        <div class="w3-col l8 s12">
+                            <div class="w3-card-4 w3-margin w3-white">
+                                <div style="padding:20px 20px 20px 20px">
+                                    @RenderBody()
+                                </div>
+                            </div>
+                            </hr>
+                        </div>
+
+                        <div class="w3-col l4">
+                            <!-- About Card -->
+                            <div class="w3-card w3-margin w3-margin-top">
+                                <div class="w3-container w3-white">
+                                    <h4><b>Seray</b></h4>
+                                    <ul class="list-star">
+                                        <li><a href="@Url.Action("Create", "Product") " title=" Product" class="btn btn-md btn-info">Product</a></li>
+                                        <li><a href="#" title="Travel" class="btn btn-md btn-primary">Travel</a></li>
+                                        <li><a href="@Url.Action("User", "Profil") " title=" Product" class="btn btn-md btn-info">Profil düzenle</a></li>
+                                        <li><a href="@Url.Action("ProductList", "Product") " title=" Product" class="btn btn-md btn-info">Ürünlerimi Listele</a></li>
+                                    </ul>
+                                    </ul>
+                                    <p>Learn, Share, Build</p>
+                                </div>
+                            </div><hr>
+
+                            <!-- Posts -->
+                            <div class="w3-card w3-margin">
+                                <div class="w3-container w3-padding">
+                                    <h4>Popular Posts</h4>
+                                </div>
+                                <ul class="w3-ul w3-hoverable w3-white">
+                                    <li class="w3-padding-16">
+                                        <a href="https://www.takatuka.com/crocs/crocband-ii-5-clog/candy-pink-party-pink">
+                                            <img src="https://s.takatuka.com/p/R138925/6LR/a1.jpg"
+                                                 alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                                        </a>
+
+                                        <span class="w3-large">Crocs</span><br>
+                                        <span>Yeni Modeller Burada</span>
+                                    </li>
+                                    <li class="w3-padding-16">
+                                        <a href="https://www.takatuka.com/crocs/crocband-graphic-clog">
+                                            <img src="https://s.takatuka.com/p/R140393/3Q6/a1.jpg"
+                                                 alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                                        </a>
+
+                                        <span class="w3-large">Crocs</span><br>
+                                        <span>Yeni Modeller Burda</span>
+                                    </li>
+                                    <li class="w3-padding-16">
+                                        <a href="https://www.takatuka.com/crocs/crocband-trophical-graphic-v-clog">
+                                            <img src="https://s.takatuka.com/p/R140401/17W/a1.jpg"
+                                                 alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                                        </a>
+
+                                        <span class="w3-large">Crocs</span><br>
+                                        <span>Yeni Modeller Burada</span>
+                                    </li>
+                                    <li class="w3-padding-16 w3-hide-medium w3-hide-small">
+                                        <a href="https://www.takatuka.com/crocs/bistro-peppers-clog">
+                                            <img src="https://s.takatuka.com/p/R140316/B14/a1.jpg"
+                                                 alt="Image" class="w3-left w3-margin-right" style="width:50px">
+                                        </a>
+
+                                        <span class="w3-large">Crocs</span><br>
+                                        <span>Yeni Modeller Burada</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <hr>
+
+                            <!-- Labels / tags -->
+                            <div class="w3-card w3-margin">
+                                <div class="w3-container w3-padding">
+                                    <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">TAGS</span> 
+                                </div>
+                                <div class="w3-container w3-white">
+                                    <p>
+                                        <span class="w3-tag w3-black w3-margin-bottom">Travel</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">New York</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">London</span>
+                                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">IKEA</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">NORWAY</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">DIY</span>
+                                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Ideas</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Baby</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Family</span>
+                                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">News</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Clothing</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Shopping</span>
+                                        <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Sports</span> <span class="w3-tag w3-light-grey w3-small w3-margin-bottom">Games</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <!-- END Introduction Menu -->
+                        </div>
+
+                        <!-- END GRID -->
+                    </div><br>
+                </div>
+                <!-- content-wrapper ends -->
+            </div>
+            <!-- page-body-wrapper ends -->
+            <!-- END w3-content -->
+        @*</div>
+        </div>*@
+        <div class="container body-content">
+
+            <hr />  
+            <footer>
+                <p>&copy; @DateTime.Now.Year - Bloğum</p>
+            </footer>
+        </div>
+
+        <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        @RenderSection("Scripts", required: false)
+
+</body>
+</html>

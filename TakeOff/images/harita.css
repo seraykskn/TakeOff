@@ -1,0 +1,12 @@
+/*#harita 
+  { position: fixed; top: 0; left: 0; }
+.haritawidth { width: 100%; }
+.haritaheight { height: 100%; }*/
+
+body {
+background-image: url(~/images/harita.jpg);
+background-repeat: repeat;
+background-attachment: scroll;
+background-color: white;
+
+}

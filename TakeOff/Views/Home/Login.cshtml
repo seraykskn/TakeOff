@@ -1,0 +1,264 @@
+﻿@model DataModel.User
+
+@{
+    ViewBag.Title = "Login";
+
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star </title>
+    <link rel="stylesheet" href="~/Templates/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    @*<link rel="stylesheet" href="../../vendors/iconfonts/puse-icons-feather/feather.css">
+        <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
+        <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">*@
+    <link rel="stylesheet" href="~/Templates/assets/css/style.css">
+    <link rel="shortcut icon" href="~/Templates/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="container-scroller">
+        <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
+            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
+                <div class="row w-100">
+                    <div class="col-lg-4 mx-auto">
+                        <div class="auto-form-wrapper">
+
+                            @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+                            {
+                                <div class="form-group">
+                                    <label class="label">Mail</label>
+                                    <div class="input-group">
+                                        @*<input type="text" class="form-control" placeholder="Username">*@
+                                        @*<input class="form-control" id="email" name="email" placeholder="Email" type="email" required />*@
+                                        @Html.TextBox("txtMail", null , new { @class = "form-control", @style = "color:blue;", @placeholder = "Email" })
+
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="mdi mdi-check-circle-outline"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label">Password</label>
+                                    <div class="input-group">
+                                        <input type="password"
+                                               @*<input class="form-control" id="password" name="password" placeholder="*********" type="password" required>*@
+                                               @Html.TextBox("txtPassword", null, new { @class = "form-control", @style = "color:blue;", @placeholder = "**********" })
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <i class="mdi mdi-check-circle-outline"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-primary submit-btn btn-block">Login</button>
+                                    <script type="text/javascript">
+                                        $(function () {
+                                            var test = {
+                                                number: 456,
+                                                name: "Ryu"
+                                            }
+                                            $("#btnPost").click(function () {
+                                                $.post('@Url.Action("Index", "Home")', JSON.stringify(test));
+                                            });
+                                        });
+                                   </script>
+                                </div>
+
+                                <div class="form-group d-flex justify-content-between">
+                                    <div class="form-check form-check-flat mt-0">
+                                        <label class="form-check-label">
+                                            <input type="checkbox" class="form-check-input" checked> Keep me signed in
+                                        </label>
+                                    </div>
+                                    <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-block g-login">
+                                        <img class="mr-3" src="../../images/file-icons/icon-google.svg" alt="">Log in with Google
+                                    </button>
+                                </div>
+                                <div class="text-block text-center my-3">
+                                    <span class="text-small font-weight-semibold">Not a member ?</span>
+                                    <a href="register.html" class="text-black text-small">Create new account</a>
+                                </div>
+                            <div class="text-block text-center my-3">
+                                <a href="/Home" class="text-black text-small font-weight-semibold">Back to Homepage</a>
+                            </div>
+                            }
+                        </div>
+                        <ul class="auth-footer">
+                            <li>
+                                <a href="#">Conditions</a>
+                            </li>
+                            <li>
+                                <a href="#">Help</a>
+                            </li>
+                            <li>
+                                <a href="#">Terms</a>
+                            </li>
+                        </ul>
+                        <p class="footer-text text-center">copyright © 2018 Seray ❤. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- content-wrapper ends -->
+        </div>
+        <!-- page-body-wrapper ends -->
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+
+    <script src="~/Templates/vendors/js/vendor.bundle.base.js"></script>
+    <script src="~/Templates/vendors/js/vendor.bundle.addons.js"></script>
+    <!-- endinject -->
+    <!-- inject:js -->
+
+    <script src="~/Templates/assets/js/off-canvas.js"></script>
+    <script src="../../js/hoverable-collapse.js"></script>
+
+    <script src="~/Templates/assets/js/misc.js"></script>
+    <script src="../../js/settings.js"></script>
+    <script src="../../js/todolist.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>
+@section scripts
+    {
+    <script type="text/javascript">
+        $(function () {
+            $("#personCreate").click(function () {
+                var person = getPerson();
+
+                // poor man's validation
+                if (person == null) {
+                    alert("Specify a name please!");
+                    return;
+                }
+
+                var json = $.toJSON(person);
+
+                $.ajax({
+                    url: '/home/login',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: json,
+                    contentType: 'application/json; charset=utf-8',
+                    success: function (data) {
+                        // get the result and do some magic with it
+                        var message = data.Message;
+                        $("#resultMessage").html(message);
+                    }
+                });
+            });
+        });
+
+        function getPerson() {
+            var mail = $("#Mail").val();
+            var password = $("#Password").val();
+
+            // poor man's validation
+            return (mail == "") ? null : { Mail: mail, Password: password };
+        }
+    </script>
+}
+@*@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Giriş Yap" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}*@
+
+@*@section scripts
+    {
+        <script type="text/javascript">
+            $(window).load(function () {
+
+                var theWindow = $(window),
+                    $harita = $("#harita"),
+                    aspectRatio = $harita.width() / $harita.height();
+                function resizeBg() {
+                    if ((theWindow.width() / theWindow.height()) < aspectRatio) {
+                        $harita
+                            .removeClass()
+                            .addClass('haritaheight');
+                    } else {
+                        $harita
+                            .removeClass()
+                            .addClass('haritawidth');
+                    }
+
+                }
+
+                theWindow.resize(resizeBg).trigger("resize");
+            });
+        </script>
+       }*@
+
+
+@*@using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>User</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Mail, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Mail, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Mail, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Giriş Yap" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }*@
+
